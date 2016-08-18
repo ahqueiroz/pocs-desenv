@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<classpath>
+  <source-attachment entry="C:/Artefatos_desenv/servidores/wildfly-9.0.1.Final/modules/system/layers/base/javax/inject/api/main/javax.inject-1.jar" runtime-id="WildFly 9.x Runtime" source-attachment-path="/livraria"/>
+</classpath>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;livraria/src/test/resource&apos;&#x0D;&#x0A;- Original project: &apos;tcesp_servico_temporario-ejb&apos;&#x0D;&#x0A;- Destination element: &apos;livraria/src/test/resource&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     arquillian.xml&#x0D;&#x0A;     test-ds.xml&#x0D;&#x0A;     META-INF" description="Copy elements" destination="=livraria/src\/test\/resource" element1="src/test/resources/arquillian.xml" element2="src/test/resources/test-ds.xml" element3="src/test/resources/META-INF" files="2" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1470093512821" units="0" version="1.0"/>
+</session>

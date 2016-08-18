@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://jboss.org/schema/arquillian
+        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+	<engine>
+		<property name="deploymentExportPath">target/</property>
+	</engine>
+	<container qualifier="jboss" default="true">
+        <configuration>
+            
+            <property name="jbossHome">C:\Artefatos_desenv\servidores\wildfly-9.0.1.Final</property>
+            <property name="httpPort">8081</property>
+            <property name="rmiPort">1099</property>
+            <property name="javaVmArguments">-Xmx512m -Xmx768m -XX:MaxPermSize=256m
+                -Djava.net.preferIPv4Stack=true
+                -Djava.util.logging.manager=org.jboss.logmanager.LogManager
+                -Djava.endorsed.dirs=${jboss.home}/lib/endorsed
+                -Djboss.boot.server.log.dir=${jboss.home}
+                -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000
+                -Djboss.bind.address=localhost 
+                -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n
+                
+            </property>
+            
+           	<property name="javaHome">C:\Program Files\Java\jdk1.8.0_77</property>
+			<property name="outputToConsole">true</property>
+			<property name="allowConnectingToRunningServer">true</property>
+        </configuration>
+    </container>
+
+</arquillian>

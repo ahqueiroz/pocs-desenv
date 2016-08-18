@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 6 resources" deleteContents="false" description="Delete 6 resources" element1="/livraria" element2="/tcesp_servico_temporario" element3="/tcesp_servico_temporario-client" element4="/tcesp_servico_temporario-ear" element5="/tcesp_servico_temporario-ejb" element6="/tcesp_servico_temporario-web" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="6" stamp="1471487163556"/>
+</session>
