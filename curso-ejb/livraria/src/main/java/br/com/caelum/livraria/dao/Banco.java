@@ -3,13 +3,10 @@ package br.com.caelum.livraria.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Stateless;
-
 import br.com.caelum.livraria.modelo.Autor;
 import br.com.caelum.livraria.modelo.Livro;
 import br.com.caelum.livraria.modelo.Usuario;
 
-@Stateless
 public class Banco {
 	
 	public static List<Livro> livros = new ArrayList<Livro>();

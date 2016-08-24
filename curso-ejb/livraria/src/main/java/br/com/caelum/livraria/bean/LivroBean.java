@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
+import br.com.caelum.livraria.exception.LivrariaException;
 import br.com.caelum.livraria.modelo.Autor;
 import br.com.caelum.livraria.modelo.Livro;
 import br.com.caelum.livraria.service.AutorService;
@@ -24,7 +25,7 @@ public class LivroBean {
 	@Inject
 	private AutorService autorService;
 
-	public void cadastra() {
+	public void cadastra() throws LivrariaException {
 		
 		Autor autor = this.autorService.buscarPeloId(this.autorId);
 		this.livro.setAutor(autor);
