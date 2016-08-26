@@ -9,6 +9,7 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import br.com.caelum.livraria.modelo.Livro;
 
@@ -28,7 +29,16 @@ public class LivroDao {
 	
 	
 	public List<Livro> todosLivros() {
-		return entityManager.createNamedQuery("livro.findAll", Livro.class).getResultList();
+		return entityManager.createNamedQuery("Livro.findAll", Livro.class).getResultList();
+	}
+
+
+	public List<Livro> buscarLivrosPeloNome(String nome) {
+		
+		TypedQuery<Livro> query = entityManager.createNamedQuery("Livro.buscarLivroPeloNome", Livro.class);
+		query.setParameter("nome", "%" + nome + "%");
+		
+		return query.getResultList();
 	}
 	
 }

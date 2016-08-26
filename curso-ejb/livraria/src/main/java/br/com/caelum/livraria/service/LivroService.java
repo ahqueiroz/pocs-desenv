@@ -22,5 +22,10 @@ public class LivroService {
 	public List<Livro> buscarLivros(){
 		return livroDao.todosLivros();
 	}
+
+	public List<Livro> buscarLivrosPeloNome(String nome) {
+		
+		return livroDao.buscarLivrosPeloNome(nome);
+	}
 	
 }

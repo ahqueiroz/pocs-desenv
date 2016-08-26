@@ -5,12 +5,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="livro", schema="livraria")
-@NamedQuery(name = "livro.findAll", query = "select l from Livro l")
+@NamedQueries({ 
+		@NamedQuery(name = "Livro.findAll", query = "select l from Livro l"),
+		@NamedQuery(name = "Livro.buscarLivroPeloNome", query = "select l from Livro l where l.titulo like :nome") 
+	})
+
 public class Livro {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
