@@ -36,27 +36,32 @@
 -->
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
+<h:head></h:head>
 
-<body> 
-<h:form>
-		<h:panelGrid columns="2">
-		
-			<h:outputText value="Usuário"/>
-			<h:inputText value="" />
-			
-			<h:outputText value="Senha" />
-			<h:inputSecret value="" />
-			
-			<h:commandButton type="submit" value="Cadastrar" />
-			
-		</h:panelGrid>	
-	
+<body>
+	<h:form>
+		<p:panelGrid columns="2" >
+
+			<p:outputLabel value="Usuário" />
+			<p:inputText value="#{participanteBean.participante.usuario}" />
+
+			<p:outputLabel value="E-mail" />
+			<p:inputText value="#{participanteBean.participante.email}" />
+
+			<p:outputLabel value="Senha" />
+			<p:password value="#{participanteBean.participante.senha}" />
+
+			<p:commandButton action="#{participanteBean.cadastrar()}"
+				type="submit" value="Cadastrar" ajax="false"/>
+
+		</p:panelGrid>
+
 	</h:form>
-</body> 
+</body>
 </html>
 
