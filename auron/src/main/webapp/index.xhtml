@@ -45,7 +45,7 @@
 
 <body>
 	<h:form>
-		<p:panelGrid columns="2" >
+		<p:panelGrid columns="2">
 
 			<p:outputLabel value="Usuário" />
 			<p:inputText value="#{participanteBean.participante.usuario}" />
@@ -57,9 +57,21 @@
 			<p:password value="#{participanteBean.participante.senha}" />
 
 			<p:commandButton action="#{participanteBean.cadastrar()}"
-				type="submit" value="Cadastrar" ajax="false"/>
+				type="submit" value="Cadastrar" ajax="false" />
 
+			<h:dataTable value="#{participanteBean.participantes}"
+				var="participante">
+				<h:column>
+					<f:facet name="header">Nome: </f:facet>
+					<h:outputText value="#{participante.usuario}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Email: </f:facet>
+					<h:outputText value="#{participante.email}" />
+				</h:column>
+			</h:dataTable>
 		</p:panelGrid>
+
 
 	</h:form>
 </body>
