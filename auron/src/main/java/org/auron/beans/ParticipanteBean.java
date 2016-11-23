@@ -12,9 +12,8 @@ import org.auron.modelo.Participante;
 @Named
 @RequestScoped
 public class ParticipanteBean {
-
-	@Inject
-	private Participante participante;
+	
+	private Participante participante = new Participante();
 
 	@Inject
 	ParticipanteDao participanteDao;
