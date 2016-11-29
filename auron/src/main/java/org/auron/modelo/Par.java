@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Par {
 
+	public static final String MAP_SORTEIO = "sorteio";
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -21,6 +23,16 @@ public class Par {
 	
 	@ManyToOne
 	private Sorteio sorteio;
+	
+	public Par(Participante amigo, Participante amigoOculto, Sorteio sorteio) {
+		super();
+		this.amigo = amigo;
+		this.amigoOculto = amigoOculto;
+		this.sorteio = sorteio;
+	}
+	
+	Par(){
+	}
 
 	public Integer getId() {
 		return id;

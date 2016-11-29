@@ -11,9 +11,9 @@
 		<h:panelGrid columns="2">
 
 			<h:outputText value="Nome" />
-			<h:inputText value="" />
+			<h:inputText value="${sorteioBean.sorteio.nome}" />
 
-			<h:button value="Cadastrar" />
+			<h:commandButton value="Cadastrar" action="${sorteioBean.sortear()}"/>
 		</h:panelGrid>
 	</h:form>
 </h:body>

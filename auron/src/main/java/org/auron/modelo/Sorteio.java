@@ -1,5 +1,6 @@
 package org.auron.modelo;
 
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ public class Sorteio {
 
 	private String nome;
 	
-	@OneToMany
+	@OneToMany(mappedBy=Par.MAP_SORTEIO)
 	private Set<Par> pares = new LinkedHashSet<>();
 	
 
@@ -39,10 +40,18 @@ public class Sorteio {
 	}
 
 	public Set<Par> getPares() {
-		return pares;
+		return Collections.unmodifiableSet(this.pares);
 	}
 
 	public void setPares(Set<Par> pares) {
 		this.pares = pares;
+	}
+	
+	public void adicionarPar(Par par){
+		this.pares.add(par);
+	}
+
+	public int getQuantidadeDePares() {		
+		return this.pares.size();
 	}
 }
