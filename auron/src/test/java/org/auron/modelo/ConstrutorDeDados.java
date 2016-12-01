@@ -14,7 +14,7 @@ public class ConstrutorDeDados {
 			Participante participante = new Participante();
 			
 //			if (i < quantidadeParticipantes -1){			
-				participante.setUsuario("Usuario_"+i);
+				participante.setNome("Usuario_"+i);
 				participante.setEmail("Email_"+i);			
 //			}else{
 //				participante.setUsuario("Usuario_"+0);

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Participante {
 	
@@ -11,10 +13,13 @@ public class Participante {
 	@GeneratedValue
 	private Integer id;
 	
-	private String usuario;
+	@NotEmpty
+	private String nome;
 	
+	@NotEmpty
 	private String email;
 	
+	@NotEmpty
 	private String senha;
 
 	public Integer getId() {
@@ -25,12 +30,12 @@ public class Participante {
 		this.id = id;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {
@@ -56,7 +61,7 @@ public class Participante {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
-		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 
@@ -84,10 +89,10 @@ public class Participante {
 				return false;
 		} else if (!senha.equals(other.senha))
 			return false;
-		if (usuario == null) {
-			if (other.usuario != null)
+		if (nome == null) {
+			if (other.nome != null)
 				return false;
-		} else if (!usuario.equals(other.usuario))
+		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}

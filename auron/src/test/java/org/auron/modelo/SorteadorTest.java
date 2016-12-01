@@ -3,13 +3,14 @@ package org.auron.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.auron.exception.SorteioException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class SorteadorTest extends ConstrutorDeDados{
 	
-	private int quantidade = 5;	
+	private int quantidade = 3;	
 	private List<Participante> participantes;	
 	private Sorteio sorteio;
 	
@@ -20,7 +21,7 @@ public class SorteadorTest extends ConstrutorDeDados{
 	}
 
 	@Test
-	public void aQuantidadeDeParesEParticipantesDeveSerAMesma() {
+	public void aQuantidadeDeParesEParticipantesDeveSerAMesma() throws SorteioException {
 		
 		int quantidadeDeParticipantes = participantes.size();
 		
@@ -33,7 +34,7 @@ public class SorteadorTest extends ConstrutorDeDados{
 	}
 	
 	@Test
-	public void naoDeveHaverAmigosOcultosDuplicados(){
+	public void naoDeveHaverAmigosOcultosDuplicados() throws SorteioException{
 		
 		Sorteador sorteador = new Sorteador(participantes, sorteio);
 		sorteador.sortear();

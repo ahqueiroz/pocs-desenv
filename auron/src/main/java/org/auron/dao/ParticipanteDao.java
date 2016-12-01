@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.auron.modelo.Participante;
 
@@ -20,5 +21,15 @@ public class ParticipanteDao {
 
 	public List<Participante> getParticipantes() {
 		return em.createQuery("from Participante", Participante.class).getResultList();
+	}
+
+	public Participante getParticipante(String email, String senha) {
+
+		TypedQuery<Participante> query = em.createQuery("from Participante p where p.email=? and p.senha=?", Participante.class);
+		
+		query.setParameter(1, email);
+		query.setParameter(2, senha);
+
+		return query.getSingleResult();
 	}
 }

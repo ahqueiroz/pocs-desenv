@@ -2,19 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://java.sun.com/jsf/composite/primefaces"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head></h:head>
 <h:body>
+	<p:messages/>
 	<h:form>
-		<h:panelGrid columns="2">
+		<p:panelGrid columns="2">
 
-			<h:outputText value="Nome" />
-			<h:inputText value="${sorteioBean.sorteio.nome}" />
+			<p:outLabel value="Nome" />
+			<p:inputText value="#{sorteioBean.sorteio.nome}" />
 
-			<h:commandButton value="Cadastrar" action="${sorteioBean.sortear()}"/>
-		</h:panelGrid>
+			<p:commandButton value="Cadastrar" action="#{sorteioBean.sortear()}" ajax="false"/>
+			
+			<h:dataTable value="#{sorteioBean.pares}" var="par">
+				<h:column>
+					<f:facet name="header">Amigo</f:facet>
+					<h:outputText value="#{par.amigo.nome}" />
+				</h:column>
+			
+				<f:facet name="header">Amigo Oculto</f:facet>
+				<h:outputText value="#{par.amigoOculto.nome}" />
+			</h:dataTable>
+			
+		</p:panelGrid>
 	</h:form>
 </h:body>
 </html>

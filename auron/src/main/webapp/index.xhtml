@@ -44,11 +44,12 @@
 <h:head></h:head>
 
 <body>
+	<p:messages/>
 	<h:form>
 		<p:panelGrid columns="2">
 
 			<p:outputLabel value="Usuário" />
-			<p:inputText value="#{participanteBean.participante.usuario}" />
+			<p:inputText value="#{participanteBean.participante.nome}" />
 
 			<p:outputLabel value="E-mail" />
 			<p:inputText value="#{participanteBean.participante.email}" />
@@ -63,7 +64,7 @@
 				var="participante">
 				<h:column>
 					<f:facet name="header">Nome: </f:facet>
-					<h:outputText value="#{participante.usuario}" />
+					<h:outputText value="#{participante.nome}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">Email: </f:facet>
@@ -71,8 +72,6 @@
 				</h:column>
 			</h:dataTable>
 		</p:panelGrid>
-
-
 	</h:form>
 </body>
 </html>
