@@ -38,31 +38,15 @@ public class Par {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public Participante getAmigo() {
 		return amigo;
-	}
-
-	public void setAmigo(Participante amigo) {
-		this.amigo = amigo;
 	}
 
 	public Participante getAmigoOculto() {
 		return amigoOculto;
 	}
 
-	public void setAmigoOculto(Participante amigoOculto) {
-		this.amigoOculto = amigoOculto;
-	}
-
 	public Sorteio getSorteio() {
 		return sorteio;
 	}
-
-	public void setSorteio(Sorteio sorteio) {
-		this.sorteio = sorteio;
-	}	
 }

@@ -3,7 +3,7 @@ package org.auron.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.auron.exception.SorteioException;
+import org.auron.service.exception.SorteioException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +20,12 @@ public class SorteadorTest extends ConstrutorDeDados{
 		sorteio = new Sorteio();
 	}
 
+	@Test(expected=SorteioException.class)
+	public void naoDeveExistirUmaListaDeParticipantesComMenosDeDoisParticipantes() throws SorteioException{
+		Sorteador sorteador = new Sorteador(participantes, sorteio);
+		sorteador.sortear();
+	}
+	
 	@Test
 	public void aQuantidadeDeParesEParticipantesDeveSerAMesma() throws SorteioException {
 		
@@ -50,5 +56,24 @@ public class SorteadorTest extends ConstrutorDeDados{
 			Assert.assertFalse(amigoOculto.equals(proximoAmigoOculto));
 		}
 	}
-
+	
+	@Test(expected=SorteioException.class)
+	public void naoAceitarUmaListaDeParticipantesVazia() throws SorteioException{
+		Sorteador sorteador = new Sorteador(participantes, sorteio);
+		sorteador.sortear();
+	}
+	
+	@Test
+	public void ultimoAmigoOcultoEhIgualAoPrimeiroParticipante() throws SorteioException{
+		
+		Sorteador sorteador = new Sorteador(participantes, sorteio);
+		sorteador.sortear();
+		
+		List<Par> pares = new ArrayList<>(sorteio.getPares());
+		
+		Par parPrimeiro = pares.get(0);
+		Par parUltimo = pares.get(pares.size()-1);
+		
+		Assert.assertEquals(parPrimeiro.getAmigo(), parUltimo.getAmigoOculto());
+	}
 }
