@@ -1,7 +1,5 @@
 package br.com.queiroz.livrariavip.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +11,10 @@ import br.com.queiroz.livrariavip.service.ConvidadoService;
 @Controller
 public class ConvidadoController {
 	
-	@Autowired //injectado
+	@Autowired
 	private ConvidadoService service;
 
-	@RequestMapping
+	@RequestMapping("/")
 	public String index(){
 		return "index";
 	}
@@ -24,7 +22,7 @@ public class ConvidadoController {
 	@RequestMapping("listaConvidados")
 	public String listaConvidados(Model model){
 		
-		List<Convidado> convidados = service.buscarConvidados();
+		Iterable<Convidado> convidados = service.buscarConvidados();
 		
 		model.addAttribute("convidados", convidados);
 		

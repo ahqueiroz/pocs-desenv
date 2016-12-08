@@ -41,13 +41,14 @@ public class Principal {
 	    cursos.add(new Curso("Python", 45));
 	    cursos.add(new Curso("JavaScript", 150));
 	    cursos.add(new Curso("Java 8", 113));
-	    cursos.add(new Curso("C", 55));
+	    cursos.add(new Curso("C", 150));
+	    cursos.add(new Curso("Delphi", 30));
 	    
 	    //comparar cursos
 //	    cursos.sort(Comparator.comparing(curso -> curso.getAlunos()));
-//	    
-//	    cursos.sort(Comparator.comparing(Curso::getAlunos));
-//		
+	    
+//	    cursos.stream().sorted(Comparator.comparing(Curso::getAlunos)).forEach(c -> System.out.println(c.getAlunos()));
+		
 //	    cursos.forEach(System.out::println);
 	    
 //		cursos.stream().filter(c -> c.getAlunos() >= 100).mapToInt(c -> c.getAlunos()).forEach(x -> System.out.println(x));
@@ -60,8 +61,9 @@ public class Principal {
 //	    int resultado = cursos.stream().mapToInt(c -> c.getAlunos()).sum();
 //	    System.out.println(resultado);
 	    
-	    List<Curso> resultado = cursos.stream().filter(c -> c.getAlunos() > 50).collect(Collectors.toList());
-	    resultado.forEach(r -> System.out.println(r.getAlunos()));    
+//	    List<Curso> resultado = cursos.stream().filter(c -> c.getAlunos() > 50).collect(Collectors.toList());
+//	    resultado.forEach(r -> System.out.println(r.getAlunos()));    
+	    
 
 	}
 }
