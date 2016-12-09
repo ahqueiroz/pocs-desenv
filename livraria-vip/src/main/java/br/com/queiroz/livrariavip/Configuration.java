@@ -26,5 +26,4 @@ public class Configuration {
 
 		return dataSource;
 	}
-
 }

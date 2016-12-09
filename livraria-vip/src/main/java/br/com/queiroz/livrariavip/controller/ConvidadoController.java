@@ -20,8 +20,10 @@ public class ConvidadoController {
 
 	@RequestMapping("/")
 	public String index() {
+		
 		return "index";
 	}
+
 
 	@RequestMapping("listaConvidados")
 	public String listaConvidados(Model model) {
@@ -33,19 +35,18 @@ public class ConvidadoController {
 		return "listaConvidados";
 	}
 
-	@RequestMapping(value = "salvar", method = RequestMethod.POST)
+	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String salvar(@RequestParam("nome") String nome, @RequestParam("email") String email,
 			@RequestParam("telefone") String telefone, Model model) {
 
 		Convidado convidado = new Convidado(nome, telefone, email);
-		
+
 		service.salvar(convidado);
-		
+
 		List<Convidado> convidados = service.buscarConvidados();
-		
+
 		model.addAttribute("convidados", convidados);
-		
+
 		return "listaConvidados";
 	}
-	
 }
