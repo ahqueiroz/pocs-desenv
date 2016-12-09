@@ -18,4 +18,8 @@ public class ConvidadoService {
 		return (List<Convidado>) repository.findAll();
 	}
 
+	public void salvar(Convidado convidado) {
+		repository.save(convidado);
+	}
+
 }
