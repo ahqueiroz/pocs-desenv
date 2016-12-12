@@ -43,6 +43,10 @@ public class ConvidadoController {
 
 		service.salvar(convidado);
 
+		//TODO configurar o serviço corretamente
+//		EnviadorEmailService enviadorEmailService = new EnviadorEmailService();
+//		enviadorEmailService.enviar(nome, email);
+		
 		List<Convidado> convidados = service.buscarConvidados();
 
 		model.addAttribute("convidados", convidados);
