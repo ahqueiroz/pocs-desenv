@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import org.apache.commons.collections4.CollectionUtils;
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
+@Entity(name="sorteio")
 public class Sorteio {
 
 	@Id

@@ -9,10 +9,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.auron.controller.SorteadorController;
 import org.auron.exception.SorteioException;
 import org.auron.modelo.Par;
 import org.auron.modelo.Participante;
-import org.auron.modelo.Sorteador;
 import org.auron.modelo.Sorteio;
 import org.auron.service.ParticipanteService;
 import org.auron.service.SorteioService;
@@ -45,9 +45,9 @@ public class SorteioBean {
 
 		List<Participante> participantes = participanteService.getParticipantes();
 
-		Sorteador sorteador;
+		SorteadorController sorteador;
 		try {
-			sorteador = new Sorteador(participantes, sorteio);
+			sorteador = new SorteadorController(participantes, sorteio);
 			sorteador.sortear();
 		} catch (SorteioException e) {
 			

@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Entity(name="par")
 public class Par {
 
 	public static final String MAP_SORTEIO = "sorteio";
