@@ -9,15 +9,17 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
-import br.com.queiroz.cobranca.enuns.TituloStatus;
+import br.com.queiroz.cobranca.enums.TituloStatus;
 
 @Entity
+@Table(name="titulo", schema="cobranca")
 public class Titulo {
 
 	@Id

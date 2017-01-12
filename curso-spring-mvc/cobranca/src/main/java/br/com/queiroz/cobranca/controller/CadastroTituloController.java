@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.queiroz.cobranca.enuns.CadastroPaginas;
-import br.com.queiroz.cobranca.enuns.TituloStatus;
+import br.com.queiroz.cobranca.enums.CadastroPaginas;
+import br.com.queiroz.cobranca.enums.TituloStatus;
 import br.com.queiroz.cobranca.model.Titulo;
 import br.com.queiroz.cobranca.model.service.TituloService;
 

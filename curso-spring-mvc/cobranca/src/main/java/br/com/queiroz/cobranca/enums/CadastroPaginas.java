@@ -1,4 +1,4 @@
-package br.com.queiroz.cobranca.enuns;
+package br.com.queiroz.cobranca.enums;
 
 public enum CadastroPaginas {
 	
