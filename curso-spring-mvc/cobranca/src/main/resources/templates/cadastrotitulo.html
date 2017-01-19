@@ -1,24 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutprincipal">
+
 <head>
-<meta charset="UTF-8" />
 <title>Cadastro de Titulos</title>
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
-<body>
 
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#"> <img alt="Barra de Titulos"
-					src="/images/logo-algaworks.png" />
-				</a>
-			</div>
-		</div>
-	</nav>
-
+<section layout:fragment="conteudo">
 	<form class="form-horizontal" action="/titulos/salvar" method="post">
 
 		<div class="alert alert-success"
@@ -28,8 +18,9 @@
 
 		<div class="panel panel-default">
 
-			<div class="panel-heading">
-				<h1 class="panel-title">Cadastro de Títulos</h1>
+			<div class="clearfix">
+				<h1 class="panel-title titulo-panel">Cadastro de Títulos</h1>
+				<a class="btn btn-link link-panel" href="/titulos">voltar para pesquisa</a>
 			</div>
 
 			<div class="panel-body">
@@ -76,7 +67,6 @@
 		</div>
 
 	</form>
+</section>
 
-	<script src="/js/bootstrap.min.js"></script>
-</body>
 </html>

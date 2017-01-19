@@ -1,6 +1,5 @@
 package br.com.queiroz.cobranca.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,17 +36,20 @@ public class CadastroTituloController {
 		ModelAndView mv = new ModelAndView();
 		
 		service.salvar(titulo);
-
-		mv.addObject("mensagem", "Titulo salvo com sucesso");
 		
+		mv.addObject("mensagem", "Titulo salvo com sucesso");
 		mv.setViewName(CadastroPaginas.PAGINA_CADASTRO_TITULO.getDescricao());
 
 		return mv;
 	}
-	
+
+	@GetMapping
+	public ModelAndView pesquisar() {
+		return new ModelAndView(CadastroPaginas.PAGINA_PESQUISA_TITULO.getDescricao());
+	}
+
 	@ModelAttribute("tituloStatus")
-	public List<TituloStatus> getTituloStatus(){
+	public List<TituloStatus> getTituloStatus() {
 		return Arrays.asList(TituloStatus.values());
 	}
-	
 }
