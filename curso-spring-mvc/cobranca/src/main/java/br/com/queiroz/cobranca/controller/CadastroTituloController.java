@@ -45,7 +45,14 @@ public class CadastroTituloController {
 
 	@GetMapping
 	public ModelAndView pesquisar() {
-		return new ModelAndView(CadastroPaginas.PAGINA_PESQUISA_TITULO.getDescricao());
+		
+		ModelAndView mv = new ModelAndView(CadastroPaginas.PAGINA_PESQUISA_TITULO.getDescricao());
+		
+		List<Titulo> titulos = service.findAll();
+		
+		mv.addObject("titulos", titulos);
+		
+		return mv;
 	}
 
 	@ModelAttribute("tituloStatus")

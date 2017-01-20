@@ -1,5 +1,7 @@
 package br.com.queiroz.cobranca.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class TituloService{
 	
 	public void salvar(Titulo titulo){
 		tituloRepository.save(titulo);
+	}
+	
+	public List<Titulo> findAll(){
+		return tituloRepository.findAll();
 	}
 }
