@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -26,13 +29,17 @@ public class Titulo {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty (message = "Descrição não pode ser vazio !")
 	private String descricao;
 	
+	@NotNull (message="Data de Vencimento não pode ser nulo !") 
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataVencimento;
 	
+	@NotNull(message = "Valor não pode ser nulo !")
 	@NumberFormat(pattern="#,##0.00")
+	@DecimalMin(message="Valor dever ser maior ou igual a 0.01", value="0.01")
 	private BigDecimal valor;
 	
 	@Enumerated(EnumType.STRING)

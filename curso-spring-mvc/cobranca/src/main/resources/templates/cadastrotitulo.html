@@ -9,42 +9,56 @@
 </head>
 
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" action="/titulos/salvar" method="post">
+	<form class="form-horizontal" action="/titulos/salvar" method="post"	
+		th:object="${titulo}">
+		
+		<!-- criação do objeto necessário para manipulação de erros da página -->
 
-		<div class="alert alert-success"
-			th:if="${!#strings.isEmpty(mensagem)}">
-			<span th:text="${mensagem}" />
-		</div>
+		<div layout:include="mensagem"></div>
+		<!-- o nome faz referência ao arquivo mensagem.html-->
 
 		<div class="panel panel-default">
 
 			<div class="clearfix">
 				<h1 class="panel-title titulo-panel">Cadastro de Títulos</h1>
-				<a class="btn btn-link link-panel" href="/titulos">voltar para pesquisa</a>
+				<a class="btn btn-link link-panel" href="/titulos">voltar para
+					pesquisa</a>
 			</div>
 
 			<div class="panel-body">
-				<div class="form-group">
+			
+				<input type="hidden" th:field="*{id}"/>
+			
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('descricao')} ? has-error">
 					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="descricao"
-							name="descricao" />
+							th:field="*{descricao}" />
+						<!-- o uso do th:field serve para manter os campos preenchidos após o request.
+						Usa o objeto declarado no object do form. 
+						Deve ser usado no lugar do atributo name
+						Na pagina o th:field será rendereizado como 'name'
+						O '*' serve para referenciar o objeto que está recebendo na página -->
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('dataVencimento')} ? has-error">
 					<label for="dataVencimento" class="col-sm-2 control-label">Data
 						Vencimento</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" id="dataVencimento"
-							name="dataVencimento" />
+							th:field="*{dataVencimento}" />
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('valor')} ? has-error">
 					<label for="valor" class="col-sm-2 control-label">Valor</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="valor" name="valor" />
+						<input type="text" class="form-control" id="valor"
+							th:field="*{valor}" />
 					</div>
 				</div>
 

@@ -35,8 +35,17 @@
 					<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
 					<td class="text-right" th:text="|R$ ${{titulo.valor}}|"> </td>
 					<td class="text-center" th:text="${titulo.status.descricao}"> </td>
-					<td class="text-center"/>
-				</tr>
+						<td class="text-center">
+						<!-- Estou adicionando na variável {codigo} o valor carregado em codigo=${titulo.codigo} para ser passado como parametro
+							O @ monta o link dinamicamente-->
+						
+							<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.id})}">							 
+								<span
+									class="glyphicon glyphicon-pencil">
+								</span>
+							</a>
+						</td>
+					</tr>
 					<tr>
 						<td th:if="${#lists.isEmpty(titulos)}">Nenhum título foi encontrado !</td>
 					</tr>

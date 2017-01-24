@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutprincipal">
+
+<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+	<span th:text="${mensagem}" />
+</div>
+
+
+<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+	<div th:each="e : ${#fields.detailedErrors()}">
+		<!-- th:class="${e.global} ? globalerr : fielderr"> -->
+		<!-- <span th:text="${e.global} ? '*' : ${e.fieldName}"/> | -->
+		<span th:text="${e.message}" />
+	</div>
+</div>
+
+</html>
