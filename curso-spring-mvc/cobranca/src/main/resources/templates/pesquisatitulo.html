@@ -2,57 +2,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layoutprincipal">	
+	layout:decorator="layoutprincipal">
 
 <head>
 <title>Pesquisa de Títulos</title>
 </head>
 
 <section layout:fragment="conteudo">
-<div class="panel panel-default">
+	<div class="panel panel-default">
 
-	<div class="panel-heading">
-		<div class="clearfix">
-			<h1 class="panel-title titulo-panel">Cadastro de Títulos</h1>
-			<a class="btn btn-link link-panel" href="/titulos/novo">Novo título</a>
+		<div class="panel-heading">
+			<!-- o clearfix serve par corrigir algum problema de ponto flutuante do css -->
+			<div class="clearfix">
+				<h1 class="panel-title titulo-panel">Cadastro de Títulos</h1>
+				<a class="btn btn-link link-panel" href="/titulos/novo">Novo
+					título</a>
+			</div>
 		</div>
-	</div>
 
-	<div class="panel-body">
-		<table class="table table-bordered table-striped">
-			<thead>
-				<th class="text-center col-md-1">#</th>
-				<th>Descrição</th>
-				<th class="text-center col-md-2">Data de Vencimento</th>
-				<th class="text-right col-md-2">Valor</th>
-				<th class="text-center col-md-2">Status</th>
-				<th class="col-md-1" />
-			</thead>
-			<tbody>
-				<tr th:each = "titulo : ${titulos}">
-					<td class="text-center" th:text="${titulo.id}"></td>
-					<td th:text="${titulo.descricao}"> </td>
-					<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
-					<td class="text-right" th:text="|R$ ${{titulo.valor}}|"> </td>
-					<td class="text-center" th:text="${titulo.status.descricao}"> </td>
+		<div class="panel-body">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<th class="text-center col-md-1">#</th>
+					<th>Descrição</th>
+					<th class="text-center col-md-2">Data de Vencimento</th>
+					<th class="text-right col-md-2">Valor</th>
+					<th class="text-center col-md-2">Status</th>
+					<th class="col-md-1" />
+				</thead>
+				<tbody>
+					<tr th:each="titulo : ${titulos}">
+						<td class="text-center" th:text="${titulo.id}"></td>
+						<td th:text="${titulo.descricao}"></td>
+						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
+						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>
+						<td class="text-center" th:text="${titulo.status.descricao}">
+						</td>
 						<td class="text-center">
-						<!-- Estou adicionando na variável {codigo} o valor carregado em codigo=${titulo.codigo} para ser passado como parametro
-							O @ monta o link dinamicamente-->
-						
-							<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.id})}">							 
-								<span
-									class="glyphicon glyphicon-pencil">
-								</span>
-							</a>
+							<!-- Estou adicionando na variável {codigo} o valor carregado em codigo=${titulo.codigo} para ser passado como parametro
+							O @ monta o link dinamicamente--> <a class="btn btn-link btn-xs"
+							th:href="@{/titulos/{codigo}(codigo=${titulo.id})}"> <span
+								class="glyphicon glyphicon-pencil"> </span>
+						</a> <!--class="btn btn-link btn-xs serve para criar um botão pequeno  -->
+							<a class="btn btn-link btn-xs" data-toggle="modal"
+							data-target="#modalExclusao"> <span
+								class="glyphicon glyphicon-remove"> </span>
+						</a>
 						</td>
 					</tr>
 					<tr>
-						<td th:if="${#lists.isEmpty(titulos)}">Nenhum título foi encontrado !</td>
+						<td th:if="${#lists.isEmpty(titulos)}">Nenhum título foi
+							encontrado !</td>
 					</tr>
 				</tbody>
-		</table> 
+			</table>
+		</div>
 	</div>
-</div>
+
+	<div layout:include="dialogoconfirmacaoexclusao"></div>
+
 </section>
 
 </html>
