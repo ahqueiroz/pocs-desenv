@@ -9,9 +9,9 @@
 </head>
 
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" action="/titulos/salvar" method="post"	
+	<form class="form-horizontal" action="/titulos/salvar" method="post"
 		th:object="${titulo}">
-		
+
 		<!-- criação do objeto necessário para manipulação de erros da página -->
 
 		<div layout:include="mensagem"></div>
@@ -22,14 +22,13 @@
 
 			<div class="clearfix">
 				<h1 class="panel-title titulo-panel">Cadastro de Títulos</h1>
-				<a class="btn btn-link link-panel" href="/titulos">voltar para
-					pesquisa</a>
+				<a class="btn btn-link link-panel" href="/titulos">voltar para pesquisa</a>
 			</div>
 
 			<div class="panel-body">
-			
-				<input type="hidden" th:field="*{id}"/>
-			
+
+				<input type="hidden" th:field="*{id}" />
+
 				<div class="form-group"
 					th:classappend="${#fields.hasErrors('descricao')} ? has-error">
 					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
@@ -46,13 +45,14 @@
 
 				<div class="form-group"
 					th:classappend="${#fields.hasErrors('dataVencimento')} ? has-error">
-					<label for="dataVencimento" class="col-sm-2 control-label">Data
-						Vencimento</label>
+					<label for="dataVencimento" class="col-sm-2 control-label">Data Vencimento</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control glyphicon glyphicon-calendar" id="dataVencimento"
-							th:field="*{dataVencimento}" 
-							data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR" 
-							data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
+						<input type="text"
+							class="form-control glyphicon glyphicon-calendar"
+							id="dataVencimento" th:field="*{dataVencimento}"
+							data-provide="datepicker" data-date-format="dd/mm/yyyy"
+							data-date-language="pt-BR" data-date-autoclose="true"
+							data-date-today-highlight="true" data-date-orientation="bottom" />
 					</div>
 				</div>
 
@@ -60,8 +60,7 @@
 					th:classappend="${#fields.hasErrors('valor')} ? has-error">
 					<label for="valor" class="col-sm-2 control-label">Valor</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="valor"
-							th:field="*{valor}" />
+						<input type="text" class="form-control js-currency" id="valor" th:field="*{valor}" />
 					</div>
 				</div>
 

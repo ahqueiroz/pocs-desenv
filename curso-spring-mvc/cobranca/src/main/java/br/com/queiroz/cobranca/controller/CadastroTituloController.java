@@ -45,8 +45,8 @@ public class CadastroTituloController {
 
 		try {
 			service.salvar(titulo);
-		} catch (DataIntegrityViolationException e) {
-			errors.rejectValue("dataVencimento", null, "Formato de data inválido !");
+		} catch (IllegalArgumentException e) {
+			errors.rejectValue("dataVencimento", null, e.getMessage());
 			return CadastroPaginas.PAGINA_CADASTRO_TITULO.getDescricao();
 			
 		}
@@ -59,10 +59,15 @@ public class CadastroTituloController {
 		return "redirect:/titulos/novo";
 	}
 
-	// nome do parametro passado
-	// identificando o atributo do @PathVariable("codigo") o spring executa
-	// uma consulta do objeto apartir do código passado
-	// Só faz isso pq está sendo utilizado o JPA repository
+	/**
+	 * Nome do parametro passado
+	 * identificando o atributo do @PathVariable("codigo") o spring executa
+	 * uma consulta do objeto apartir do código passado
+	 * Só faz isso pq está sendo utilizado o JPA repository
+	 *  
+	 * @param titulo
+	 * @return
+	 */
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
 
