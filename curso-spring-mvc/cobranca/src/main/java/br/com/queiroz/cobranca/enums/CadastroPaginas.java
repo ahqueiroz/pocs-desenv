@@ -2,8 +2,8 @@ package br.com.queiroz.cobranca.enums;
 
 public enum CadastroPaginas {
 	
-	PAGINA_CADASTRO_TITULO("cadastrotitulo"), 
-	PAGINA_PESQUISA_TITULO("pesquisatitulo");
+	PAGINA_CADASTRO_TITULO("cadastro-titulo"), 
+	PAGINA_PESQUISA_TITULO("pesquisa-titulo");
 	
 	private String descricao;
 	

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div class="modal fade" id="modalExclusao" tabindex="-1"
+	data-keyboard="false" data-backdrop="static">
+
+	<div class="modal-dialog">
+
+		<form th:attr="data-url-base='/titulos/'" method="POST">
+
+			<!-- utilizado para que se possa mapear no controller pelo value="DELETE" -->
+			<input type="hidden" name="_method" value="DELETE" />
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<!-- botão para fechar o modal -->
+					 <!-- <button type="button" class="close" data-dismiss="modal"></button> --> 
+					<h4 class="modal-title">Excluir Título ?</h4>
+				</div>
+
+				<div class="modal-body">
+					<span></span>
+				</div>
+
+				<div class="modal-footer">
+					<button class="btn bth-link" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Excluir</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
+</div>
+</html>

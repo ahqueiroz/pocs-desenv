@@ -7,13 +7,4 @@
 	<span th:text="${mensagem}" />
 </div>
 
-
-<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
-	<div th:each="e : ${#fields.detailedErrors()}">
-		<!-- th:class="${e.global} ? globalerr : fielderr"> -->
-		<!-- <span th:text="${e.global} ? '*' : ${e.fieldName}"/> | -->
-		<span th:text="${e.message}" />
-	</div>
-</div>
-
 </html>

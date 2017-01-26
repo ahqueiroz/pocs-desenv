@@ -9,16 +9,20 @@ import br.com.queiroz.cobranca.model.Titulo;
 import br.com.queiroz.cobranca.model.repository.TituloRepository;
 
 @Service
-public class TituloService{
-	
+public class TituloService implements ITituloService {
+
 	@Autowired
 	TituloRepository tituloRepository;
-	
-	public void salvar(Titulo titulo){
+
+	public void salvar(Titulo titulo) {
 		tituloRepository.save(titulo);
 	}
-	
-	public List<Titulo> findAll(){
+
+	public List<Titulo> findAll() {
 		return tituloRepository.findAll();
+	}
+
+	public void excluir(Long codigo) {
+		tituloRepository.delete(codigo);
 	}
 }

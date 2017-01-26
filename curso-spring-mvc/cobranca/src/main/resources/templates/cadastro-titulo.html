@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layoutprincipal">
+	layout:decorator="layout-principal">
 
 <head>
 <title>Cadastro de Titulos</title>
@@ -15,6 +15,7 @@
 		<!-- criação do objeto necessário para manipulação de erros da página -->
 
 		<div layout:include="mensagem"></div>
+		<div layout:include="mensagem-erros"></div>
 		<!-- o nome faz referência ao arquivo mensagem.html-->
 
 		<div class="panel panel-default">
@@ -48,8 +49,10 @@
 					<label for="dataVencimento" class="col-sm-2 control-label">Data
 						Vencimento</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="dataVencimento"
-							th:field="*{dataVencimento}" />
+						<input type="text" class="form-control glyphicon glyphicon-calendar" id="dataVencimento"
+							th:field="*{dataVencimento}" 
+							data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR" 
+							data-date-autoclose="true" data-date-today-highlight="true" data-date-orientation="bottom"/>
 					</div>
 				</div>
 
