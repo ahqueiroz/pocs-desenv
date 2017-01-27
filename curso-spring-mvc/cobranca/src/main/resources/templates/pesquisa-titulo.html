@@ -38,8 +38,10 @@
 						<td class="text-center" th:text="${titulo.id}"></td>
 						<td th:text="${titulo.descricao}"></td>
 						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
-						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>
-						<td class="text-center" th:text="${titulo.status.descricao}">
+						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>						
+						<td class="text-center">
+	   						<span class="label" th:text="${titulo.status.descricao}"
+	   							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>
 						</td>
 						<td class="text-center">
 							<!-- Está sendo adicionado na variável {codigo} o valor carregado em codigo=${titulo.codigo} para ser passado como parametro -->
@@ -51,9 +53,15 @@
 							<!-- class="btn btn-link btn-xs serve para criar um botão pequeno  -->
 							<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalExclusao" 
 								th:attr="data-codigo=${titulo.id}, data-descricao=${titulo.descricao}" 
-								rel="tooltip" data-placement="top" title="Excluir">
+								rel="tooltip" data-placement="top" title="Excluir" >
 								<span class="glyphicon glyphicon-remove"> </span>
 							</a>
+							
+							<a class="btn btn-link btn-xs js-atualizar-status" rel="tooltip" data-placement="top" title="Receber" th:if="${titulo.pendente}"
+								th:href="@{/titulos/{codigo}/receber (codigo=${titulo.id})}">
+								<span class="glyphicon glyphicon-check"> </span>
+							</a>
+						
 						</td>
 					</tr>
 					<tr>

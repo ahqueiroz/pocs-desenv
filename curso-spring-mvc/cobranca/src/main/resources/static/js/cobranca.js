@@ -26,6 +26,21 @@ $('#modalExclusao').on(
 
 $(function() {
 	$('[rel="tooltip"]').tooltip();
-	$('.js-currency').maskMoney({decimal: ',', thousands: '.', allowZero: true});
+	$('.js-currency').maskMoney({
+		decimal : ',',
+		thousands : '.',
+		allowZero : true
+	});
+	
+	$('.js-atualizar-status').on('click', function(event){
+		
+		//não deixa exibir a url do link na barra de endereço
+		event.preventDefault();
+		
+		var botaoReceber =$(event.currentTarget);
+		
+		var urlReceber = botaoReceber.attr('href');
+		
+	});
 });
 
