@@ -12,4 +12,5 @@ public interface ITituloService {
 	
 	public void excluir (Long codigo);
 
+	public String receber(Long codigo);
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import br.com.queiroz.cobranca.enums.TituloStatus;
 import br.com.queiroz.cobranca.model.Titulo;
 import br.com.queiroz.cobranca.model.repository.TituloRepository;
 
@@ -29,5 +30,13 @@ public class TituloService implements ITituloService {
 
 	public void excluir(Long codigo) {
 		tituloRepository.delete(codigo);
+	}
+
+	@Override
+	public String receber(Long codigo) {
+		Titulo titulo = tituloRepository.findOne(codigo);
+		titulo.setStatus(TituloStatus.RECEBIDO);
+		salvar(titulo);
+		return TituloStatus.RECEBIDO.getDescricao();
 	}
 }

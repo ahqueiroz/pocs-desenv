@@ -39,7 +39,7 @@
 						<td th:text="${titulo.descricao}"></td>
 						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
 						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>						
-						<td class="text-center">
+						<td class="text-center" th:attr="data-rule=${titulo.id}">
 	   						<span class="label" th:text="${titulo.status.descricao}"
 	   							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>
 						</td>
@@ -58,6 +58,7 @@
 							</a>
 							
 							<a class="btn btn-link btn-xs js-atualizar-status" rel="tooltip" data-placement="top" title="Receber" th:if="${titulo.pendente}"
+								th:attr="data-codigo=${titulo.id}"
 								th:href="@{/titulos/{codigo}/receber (codigo=${titulo.id})}">
 								<span class="glyphicon glyphicon-check"> </span>
 							</a>

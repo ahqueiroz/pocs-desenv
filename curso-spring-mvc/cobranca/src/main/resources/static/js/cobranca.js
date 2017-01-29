@@ -34,12 +34,30 @@ $(function() {
 	
 	$('.js-atualizar-status').on('click', function(event){
 		
-		//não deixa exibir a url do link na barra de endereço
+		// não deixa exibir a url do link na barra de endereço
 		event.preventDefault();
 		
 		var botaoReceber =$(event.currentTarget);
 		
 		var urlReceber = botaoReceber.attr('href');
+		
+		var response = $.ajax({
+			
+			url: urlReceber,
+			type: 'PUT'
+		});
+		
+		response.done(function(e){
+			var codigoTitulo = botaoReceber.data('codigo');
+			$('[data-rule=' + codigoTitulo+']').html('<span class="label label-success">'+ e +'</span>'); //seletor
+			botaoReceber.hide();
+		});
+		
+		
+		response.fail(function (e){
+			alert("falhou >>>" + e);
+			console.log("falhou >>>" + e);
+		});
 		
 	});
 });
