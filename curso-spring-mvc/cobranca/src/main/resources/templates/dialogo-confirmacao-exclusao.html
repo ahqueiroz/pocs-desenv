@@ -8,7 +8,7 @@
 
 	<div class="modal-dialog">
 
-		<form th:attr="data-url-base='/titulos/'" method="POST">
+		<form th:attr="data-url-base=@{/titulos}" method="POST">
 
 			<!-- utilizado para que se possa mapear no controller pelo value="DELETE" -->
 			<input type="hidden" name="_method" value="DELETE" />

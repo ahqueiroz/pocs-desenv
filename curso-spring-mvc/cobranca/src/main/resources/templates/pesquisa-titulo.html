@@ -18,14 +18,14 @@
 			<!-- o clearfix serve par corrigir algum problema de ponto flutuante do css -->
 			<div class="clearfix">
 				<h1 class="panel-title titulo-panel">Cadastro de Títulos</h1>
-				<a class="btn btn-link link-panel" href="/titulos/novo">Novo
+				<a class="btn btn-link link-panel" th:href="@{/titulos/novo}">Novo
 					título</a>
 			</div>
 		</div>
 
 		<div class="panel-body">
 		
-			<form method="get" action="/titulos"  class="form-horizontal" th:object="${filtro}">
+			<form method="get" th:action="@{/titulos}"  class="form-horizontal" th:object="${filtro}">
 				<div class="form-group">
 					<div class="col-sm-4">
 						<div class="input-group">
