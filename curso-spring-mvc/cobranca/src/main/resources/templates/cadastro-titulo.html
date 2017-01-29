@@ -67,7 +67,7 @@
 				<div class="form-group">
 					<label for="status" class="col-sm-2 control-label">Status</label>
 					<div class="col-sm-2">
-						<select class="form-control" name="status">
+						<select class="form-control" th:field="*{status}">
 							<option th:each="tituloStatus : ${tituloStatus}"
 								th:value="${tituloStatus}" th:text="${tituloStatus.descricao}"></option>
 						</select>

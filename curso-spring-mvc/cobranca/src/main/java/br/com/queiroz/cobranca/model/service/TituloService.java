@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.queiroz.cobranca.enums.TituloStatus;
 import br.com.queiroz.cobranca.model.Titulo;
 import br.com.queiroz.cobranca.model.repository.TituloRepository;
+import br.com.queiroz.cobranca.model.repository.filter.TituloFilter;
 
 @Service
 public class TituloService implements ITituloService {
@@ -38,5 +39,10 @@ public class TituloService implements ITituloService {
 		titulo.setStatus(TituloStatus.RECEBIDO);
 		salvar(titulo);
 		return TituloStatus.RECEBIDO.getDescricao();
+	}
+
+	@Override
+	public List<Titulo> filtrarPorCampo(TituloFilter filtro) {
+		return tituloRepository.findByDescricaoContaining(filtro.getDescricao());
 	}
 }

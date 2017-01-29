@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.queiroz.cobranca.enums.CadastroPaginas;
 import br.com.queiroz.cobranca.enums.TituloStatus;
 import br.com.queiroz.cobranca.model.Titulo;
+import br.com.queiroz.cobranca.model.repository.filter.TituloFilter;
 import br.com.queiroz.cobranca.model.service.ITituloService;
 
 @Controller
@@ -78,13 +80,16 @@ public class CadastroTituloController {
 		return mv;
 	}
 
+	//@RequestParam(defaultValue = "%") -> indica que se a descricao não for informada, o default fica sendo %
+	//@RequestParam -> recebe um paramatro da pagina
+	//@ModelAttribute(value="filtro") -> força o spring a inicializar o objeto
 	@GetMapping
-	public ModelAndView pesquisar() {
+	public ModelAndView pesquisar(@ModelAttribute(value="filtro") TituloFilter filtro) {
 
 		ModelAndView mv = new ModelAndView(CadastroPaginas.PAGINA_PESQUISA_TITULO.getDescricao());
-
-		List<Titulo> titulos = service.findAll();
-
+		
+		List<Titulo> titulos = service.filtrarPorCampo(filtro);
+		
 		mv.addObject("titulos", titulos);
 
 		return mv;
