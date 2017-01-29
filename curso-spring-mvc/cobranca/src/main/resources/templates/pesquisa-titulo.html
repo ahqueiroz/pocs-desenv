@@ -40,52 +40,54 @@
 				</div>
 			</form>				
 
-			<table class="table table-bordered table-striped">
-				<thead>
-					<th class="text-center col-md-1">#</th>
-					<th>Descrição</th>
-					<th class="text-center col-md-2">Data de Vencimento</th>
-					<th class="text-right col-md-2">Valor</th>
-					<th class="text-center col-md-2">Status</th>
-					<th class="col-md-1" />
-				</thead>
-				<tbody>
-					<tr th:each="titulo : ${titulos}">
-						<td class="text-center" th:text="${titulo.id}"></td>
-						<td th:text="${titulo.descricao}"></td>
-						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
-						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>						
-						<td class="text-center" th:attr="data-rule=${titulo.id}">
-	   						<span class="label" th:text="${titulo.status.descricao}"
-	   							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>
-						</td>
-						<td class="text-center">
-							<!-- Está sendo adicionado na variável {codigo} o valor carregado em codigo=${titulo.codigo} para ser passado como parametro -->
-							<!-- O @ monta o link dinamicamente--> 
-							<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.id})}" 
-							rel="tooltip" data-placement="top" title="Editar"> 
-								<span class="glyphicon glyphicon-pencil"> </span>
-							</a> 
-							<!-- class="btn btn-link btn-xs serve para criar um botão pequeno  -->
-							<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalExclusao" 
-								th:attr="data-codigo=${titulo.id}, data-descricao=${titulo.descricao}" 
-								rel="tooltip" data-placement="top" title="Excluir" >
-								<span class="glyphicon glyphicon-remove"> </span>
-							</a>
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<th class="text-center col-md-1">#</th>
+						<th>Descrição</th>
+						<th class="text-center col-md-2">Data de Vencimento</th>
+						<th class="text-right col-md-2">Valor</th>
+						<th class="text-center col-md-2">Status</th>
+						<th class="col-md-1" />
+					</thead>
+					<tbody>
+						<tr th:each="titulo : ${titulos}">
+							<td class="text-center" th:text="${titulo.id}"></td>
+							<td th:text="${titulo.descricao}"></td>
+							<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
+							<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>						
+							<td class="text-center" th:attr="data-rule=${titulo.id}">
+		   						<span class="label" th:text="${titulo.status.descricao}"
+		   							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>
+							</td>
+							<td class="text-center">
+								<!-- Está sendo adicionado na variável {codigo} o valor carregado em codigo=${titulo.codigo} para ser passado como parametro -->
+								<!-- O @ monta o link dinamicamente--> 
+								<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.id})}" 
+								rel="tooltip" data-placement="top" title="Editar"> 
+									<span class="glyphicon glyphicon-pencil"> </span>
+								</a> 
+								<!-- class="btn btn-link btn-xs serve para criar um botão pequeno  -->
+								<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalExclusao" 
+									th:attr="data-codigo=${titulo.id}, data-descricao=${titulo.descricao}" 
+									rel="tooltip" data-placement="top" title="Excluir" >
+									<span class="glyphicon glyphicon-remove"> </span>
+								</a>
+								
+								<a class="btn btn-link btn-xs js-atualizar-status" rel="tooltip" data-placement="top" title="Receber" th:if="${titulo.pendente}"
+									th:attr="data-codigo=${titulo.id}"
+									th:href="@{/titulos/{codigo}/receber (codigo=${titulo.id})}">
+									<span class="glyphicon glyphicon-check"> </span>
+								</a>
 							
-							<a class="btn btn-link btn-xs js-atualizar-status" rel="tooltip" data-placement="top" title="Receber" th:if="${titulo.pendente}"
-								th:attr="data-codigo=${titulo.id}"
-								th:href="@{/titulos/{codigo}/receber (codigo=${titulo.id})}">
-								<span class="glyphicon glyphicon-check"> </span>
-							</a>
-						
-						</td>
-					</tr>
-					<tr>
-						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum título foi encontrado !</td>
-					</tr>
-				</tbody>
-			</table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum título foi encontrado !</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>	
 		</div>
 	</div>
 
